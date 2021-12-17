@@ -1,38 +1,74 @@
-# create-svelte
+__**timestamp~ 1:58:23**__
+Send message to selected User
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+let ref = collection(db, 'whatzapp_messages', id, 'chat')
+- whatzapp_messages: collection
+- chat: subcollection
 
-## Creating a project
+Sir, I don't understand what this expression mean, could you please explain ???
+- const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}` 
 
-If you're seeing this, you've probably already done this step. Congrats!
+__**timestamp~ 2:07:00**__
+Send image along with text message to selected user
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+__**timestamp~ 2:11:12**__
+Send image along with text message to selected user
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+I was stuck on this tutorial, because it is very boring, the author is very bad at illustrating things, the voice, the tone, the pace makes people turn away, when can I finish this project ??? I have no clue 😥
 
-> Note: the `@next` is temporary
+__**timestamp~ 2:38:12**__
+show unread, and remove unread
 
-## Developing
+### click user in user-list brings the messages
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Question:
+- scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+What does it mean by placing a question mark after current before .scrollIntoView, can you explain, thanks a lot 🙏🙏🙏
 
-```bash
-npm run dev
+Question: 
+- What's the meaning of putting a question mark after user ?
+`const user2 = user?.uid`
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## TodoList
 
-## Building
+- _*unread*_ 
+  - add 'new message' text in user list whenever selectedUser receives a new message
+  - remove 'new message' after loggedInUser click the user list 
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
+- _*emoji*_
+  - Emoji Menu Keyboard (How-To-Svelte) / youtube video
+  - color gone wrong
+  - [90%-Done] 🙂
 
-```bash
-npm run build
-```
+- _*mic*_ 
+  - Audio Recorder | HTML, CSS and JavaScript Tutorial / youtube
+  - Recorder js voice button / youtube
+  - audio tag styling
+  - [100%-Done] 😁😁😀
 
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+- _*profile*_
+  - reference: smackchat
+  - selected user profile ?
+  - [50%-Done]
+
+- _*PWA*_
+  - reference: Create a PWA with Sveltekit | Svelte / medium (working 😀)
+  - PWA Tutorial for Beginners #23 ~ #23 ~ #28 / youtube
+  - offline cannot be accomplished because the app is required auth, and the auth cannot be performed when there is no internnet connection, therefore only shell can be cached offline
+  - not yet to implement
+  - [Done] 😀
+
+- _*route gruad server side*_
+  - serverside auth
+  - [Not-Implement] 
+
+- _*deployment*_
+  - reference: Deploy SvelteKit App with Vercel / dev.to
+ 
+  _*firebase admin sdk*_
+  - integreate firebase on server (api route)
+
+  _*svelte project*_
+  - This app does not required backend, therefore sveltekit is not the best option, shift to Svelte is the right choice
+
+

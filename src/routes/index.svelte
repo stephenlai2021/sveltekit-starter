@@ -1,22 +1,52 @@
-<script context="module">
-  export const prerender = true
-</script>
-
 <script>
-  import Counter from '$lib/counter.svelte'
+  import SignupForm from "$lib/signupform.svelte";
+  import LoginForm from "$lib/loginform.svelte";
+  import { goto } from "$app/navigation";
+  import { onAuthStateChanged } from "firebase/auth";
+  import { auth } from "$lib/functions/firebase";
+  import { onMount } from "svelte";
+
+  let showLogin = true;
+  let showPage = false;
+
+  onMount(() => {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        goto("/chat");
+        // goto("/test");
+      } else {
+        showPage = true;
+      }
+      return unsub;
+    });
+  });
 </script>
 
-<section>
-  <h1>Welcome!</h1>
-  <h2>Let's learn Svelte</h2>
-  <Counter />
-</section>
-
-<style>
-  section {
-    min-height: calc(100vh - var(--header-height));
-    display: grid;
-    place-items: center;
-    place-content: center;
-  }
-</style>
+{#if showPage}
+  <div class="welcome container">
+    <div>
+      <div class="img-wrapper">
+        <img class="logo" src="whatzapp.png" alt="whatzapp logo" />
+      </div>
+      {#if !showLogin}
+        <h2>Sign up</h2>
+        <SignupForm />
+        <p>
+          Already registered ? <span on:click={() => (showLogin = true)}
+            >Login</span
+          > instead
+        </p>
+      {:else}
+        <h2>Login</h2>
+        <LoginForm />
+        <p>
+          No account yet ? <span on:click={() => (showLogin = false)}
+            >Signup</span
+          > instead
+        </p>
+      {/if}
+    </div>
+  </div>
+{:else}
+  <img width="200" src="loading.gif" alt="spinner gif" />
+{/if}
